@@ -3,43 +3,196 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChadSite</title>
+    <title>Custom Font Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Cordial&display=swap" rel="stylesheet"> <!-- Font from Google -->
     <style>
-      /* Set body to cover the full height of the viewport */
       body {
+        font-family: Arial, sans-serif;
         margin: 0;
-        height: 100vh; /* 100% of the viewport height */
+        padding: 0;
         display: flex;
-        justify-content: center; /* Horizontally center */
-        align-items: center; /* Vertically center */
-        font-family: Arial, sans-serif; /* Optional: To change the font */
-        background-color: #f0f0f0; /* Optional: Add background color */
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
       }
 
-      /* Centered container */
       .container {
-        text-align: center; /* Center text inside container */
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        max-width: 1200px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        background-color: #fff; /* White background for the container */
-        border-radius: 10px; /* Optional: rounded corners */
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: add a slight shadow */
       }
 
-      /* Heading style */
-      h1 {
-        color: #333; /* Dark text color for heading */
+      .left-side {
+        flex: 1;
+        text-align: center;
       }
 
-      /* Paragraph style */
-      p {
-        color: #666; /* Lighter text color for paragraph */
+      .left-side img {
+        width: 300px;
+        margin-bottom: 20px;
+      }
+
+      .right-side {
+        flex: 1;
+        padding-left: 30px;
+      }
+
+      .right-side h1 {
+        font-size: 32px;
+        color: #333;
+      }
+
+      .right-side p {
+        font-size: 18px;
+        color: #666;
+        margin: 10px 0;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .form-group select, .form-group input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .input-text {
+        font-family: 'Cherry Cordial', cursive;
+        font-size: 36px;
+        color: #333;
+        border: none;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+
+      .add-to-cart {
+        margin-top: 20px;
+        padding: 12px 20px;
+        background-color: #FF9900;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .add-to-cart:hover {
+        background-color: #e68900;
+      }
+
+      /* Container for the preview of the entered name */
+      .preview-container {
+        margin-top: 30px;
+        font-family: 'Cherry Cordial', cursive;
+        font-size: 36px;
+        color: #333;
       }
     </style>
   </head>
+
   <body>
     <div class="container">
-      <h1>Welcome to ChadSite!</h1>
-      <p>This is my custom HTML website centered on the page.</p>
+      <!-- Left side image and preview area -->
+      <div class="left-side">
+        <img src="https://via.placeholder.com/300x200.png?text=Your+Text+Preview" alt="Text preview">
+        <div class="preview-container" id="name-preview">
+          <!-- Dynamic name preview will appear here -->
+        </div>
+      </div>
+
+      <!-- Right side form section -->
+      <div class="right-side">
+        <h1>Enter Your Text</h1>
+        <p>Customize your text below and see the preview instantly.</p>
+
+        <!-- Input for name -->
+        <div class="form-group">
+          <label for="nameInput">Enter Your Text</label>
+          <input type="text" id="nameInput" class="input-text" placeholder="Enter Your Text">
+        </div>
+
+        <!-- Dropdown for font -->
+        <div class="form-group">
+          <label for="fontSelect">Choose Font</label>
+          <select id="fontSelect">
+            <option value="Cherry Cordial">Cherry Cordial</option>
+            <option value="Roboto">Roboto</option>
+            <option value="Lobster">Lobster</option>
+            <option value="Pacifico">Pacifico</option>
+            <option value="Dancing Script">Dancing Script</option>
+          </select>
+        </div>
+
+        <!-- Dropdown for finish -->
+        <div class="form-group">
+          <label for="finishSelect">Finish</label>
+          <select id="finishSelect">
+            <option value="Matte">Matte</option>
+            <option value="Glossy">Glossy</option>
+            <option value="Satin">Satin</option>
+            <option value="Wooden">Wooden</option>
+            <option value="Vintage">Vintage</option>
+          </select>
+        </div>
+
+        <!-- Dropdown for mounting -->
+        <div class="form-group">
+          <label for="mountingSelect">Mounting</label>
+          <select id="mountingSelect">
+            <option value="No Mounting">No Mounting</option>
+            <option value="Wall Mount">Wall Mount</option>
+            <option value="Table Mount">Table Mount</option>
+            <option value="Frame Mount">Frame Mount</option>
+          </select>
+        </div>
+
+        <!-- Dropdown for height -->
+        <div class="form-group">
+          <label for="heightSelect">Height</label>
+          <select id="heightSelect">
+            <option value="20in">20 inches</option>
+            <option value="10in">10 inches</option>
+          </select>
+        </div>
+
+        <!-- Add to Cart button -->
+        <button class="add-to-cart">Add to Cart</button>
+
+        <!-- Button to update the preview -->
+        <button class="add-to-cart" onclick="updatePreview()">Enter</button>
+      </div>
     </div>
+
+    <script>
+      function updatePreview() {
+        const nameInput = document.getElementById('nameInput').value;
+        const namePreview = document.getElementById('name-preview');
+        const selectedFont = document.getElementById('fontSelect').value;
+        
+        // Set the font family for preview text
+        namePreview.style.fontFamily = selectedFont;
+
+        // Show the entered name as preview
+        namePreview.textContent = nameInput ? nameInput : 'Enter Your Text';
+      }
+    </script>
   </body>
 </html>
