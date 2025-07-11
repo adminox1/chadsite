@@ -4,12 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Font Preview</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cherry+Cordial&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Cordial&display=swap" rel="stylesheet"> <!-- Font from Google -->
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -103,6 +98,7 @@
         background-color: #e68900;
       }
 
+      /* Container for the preview of the entered name */
       .preview-container {
         margin-top: 30px;
         font-family: 'Cherry Cordial', cursive;
@@ -111,34 +107,76 @@
       }
     </style>
   </head>
+
   <body>
     <div class="container">
-      <div class="left-side">
-        <img src="your-image.jpg" alt="Text preview">
+      <!-- Left side image and preview area -->
+      <div class="" alt="Text preview">
+        <div class="preview-container" id="name-preview">
+          <!-- Dynamic name preview will appear here -->
+        </div>
       </div>
-      <div class="right-side">
-        <h1>Custom Font Preview</h1>
-        <p>Choose a font and enter text to see the preview.</p>
 
+      <!-- Right side form section -->
+      <div class="right-side">
+        <h1>Enter Your Text</h1>
+        <p>Customize your text below and see the preview instantly.</p>
+
+        <!-- Input for name -->
         <div class="form-group">
-          <label for="fontSelect">Select Font:</label>
-          <select id="fontSelect" onchange="updatePreview()">
+          <label for="nameInput">Enter Your Text</label>
+          <input type="text" id="nameInput" class="input-text" placeholder="Enter Your Text">
+        </div>
+
+        <!-- Dropdown for font -->
+        <div class="form-group">
+          <label for="fontSelect">Choose Font</label>
+          <select id="fontSelect">
             <option value="Cherry Cordial">Cherry Cordial</option>
             <option value="Roboto">Roboto</option>
             <option value="Lobster">Lobster</option>
             <option value="Pacifico">Pacifico</option>
             <option value="Dancing Script">Dancing Script</option>
-            <option value="Manufacturing Consent">Manufacturing Consent</option>
           </select>
         </div>
 
+        <!-- Dropdown for finish -->
         <div class="form-group">
-          <label for="nameInput">Enter Text:</label>
-          <input type="text" id="nameInput" class="input-text" oninput="updatePreview()" placeholder="Enter your text">
+          <label for="finishSelect">Finish</label>
+          <select id="finishSelect">
+            <option value="Matte">Matte</option>
+            <option value="Glossy">Glossy</option>
+            <option value="Satin">Satin</option>
+            <option value="Wooden">Wooden</option>
+            <option value="Vintage">Vintage</option>
+          </select>
         </div>
 
-        <!-- Preview of the entered name -->
-        <div class="preview-container" id="name-preview">Enter Your Text</div>
+        <!-- Dropdown for mounting -->
+        <div class="form-group">
+          <label for="mountingSelect">Mounting</label>
+          <select id="mountingSelect">
+            <option value="No Mounting">No Mounting</option>
+            <option value="Wall Mount">Wall Mount</option>
+            <option value="Table Mount">Table Mount</option>
+            <option value="Frame Mount">Frame Mount</option>
+          </select>
+        </div>
+
+        <!-- Dropdown for height -->
+        <div class="form-group">
+          <label for="heightSelect">Height</label>
+          <select id="heightSelect">
+            <option value="20in">20 inches</option>
+            <option value="10in">10 inches</option>
+          </select>
+        </div>
+
+        <!-- Add to Cart button -->
+        <button class="add-to-cart">Add to Cart</button>
+
+        <!-- Button to update the preview -->
+        <button class="add-to-cart" onclick="updatePreview()">Enter</button>
       </div>
     </div>
 
@@ -147,17 +185,11 @@
         const nameInput = document.getElementById('nameInput').value;
         const namePreview = document.getElementById('name-preview');
         const selectedFont = document.getElementById('fontSelect').value;
+        
+        // Set the font family for preview text
+        namePreview.style.fontFamily = selectedFont;
 
-        const fontMap = {
-          "Cherry Cordial": "'Cherry Cordial', cursive",
-          "Roboto": "'Roboto', sans-serif",
-          "Lobster": "'Lobster', cursive",
-          "Pacifico": "'Pacifico', cursive",
-          "Dancing Script": "'Dancing Script', cursive",
-          "Manufacturing Consent": "'Manufacturing Consent', serif"
-        };
-
-        namePreview.style.fontFamily = fontMap[selectedFont] || 'Arial, sans-serif';
+        // Show the entered name as preview
         namePreview.textContent = nameInput ? nameInput : 'Enter Your Text';
       }
     </script>
