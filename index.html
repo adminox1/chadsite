@@ -117,7 +117,7 @@
       .font-grid {
         display: flex;
         flex-wrap: wrap;
-        max-height: 360px; /* Scroll if taller */
+        max-height: 360px;
         overflow-y: auto;
         border: 1px solid #ccc;
         padding: 10px;
@@ -143,6 +143,13 @@
       .font-option.active {
         border-color: #FF9900;
         background-color: #fff6e5;
+      }
+
+      /* NEW: Font preview text inside each option */
+      .font-preview {
+        font-size: 16px;
+        margin-top: 8px;
+        color: #555;
       }
     </style>
   </head>
@@ -192,79 +199,38 @@
           </select>
         </div>
 
-        <!-- FONT GRID replaces dropdown -->
+        <!-- FONT GRID -->
         <div class="form-group">
           <label>Choose Font</label>
           <div class="font-grid" id="fontGrid">
-            <div class="font-option active" data-font="'Cherry Cordial'" style="font-family: 'Cherry Cordial';">Cherry Cordial</div>
-            <div class="font-option" data-font="'Roboto'" style="font-family: 'Roboto';">Roboto</div>
-            <div class="font-option" data-font="'Lobster'" style="font-family: 'Lobster';">Lobster</div>
-            <div class="font-option" data-font="'Pdwo'" style="font-family: 'Pacifico';">Pacifico</div>
-            <div class="font-option" data-font="'Dancing Script'" style="font-family: 'Dancing Script';">Dancing Script</div>
-            <div class="font-option" data-font="'Great Vibes'" style="font-family: 'Great Vibes';">Great Vibes</div>
-            <div class="font-option" data-font="'Playfair Display'" style="font-family: 'Playfair Display';">Playfair Display</div>
-            <div class="font-option" data-font="'Alex Brush'" style="font-family: 'Alex Brush';">Alex Brush</div>
-            <div class="font-option" data-font="'Satisfy'" style="font-family: 'Satisfy';">Satisfy</div>
-            <div class="font-option" data-font="'Cinzel'" style="font-family: 'Cinzel';">Cinzel</div>
-            <div class="font-option" data-font="'Quicksand'" style="font-family: 'Quicksand';">Quicksand</div>
-            <div class="font-option" data-font="'Raleway'" style="font-family: 'Raleway';">Raleway</div>
-            <div class="font-option" data-font="'Arvo'" style="font-family: 'Arvo';">Arvo</div>
-            <div class="font-option" data-font="'Montserrat'" style="font-family: 'Montserrat';">Montserrat</div>
-            <div class="font-option" data-font="'Bebas Neue'" style="font-family: 'Bebas Neue';">Bebas Neue</div>
-            <div class="font-option" data-font="'Fredoka'" style="font-family: 'Fredoka';">Fredoka</div>
-            <div class="font-option" data-font="'Poiret One'" style="font-family: 'Poiret One';">Poiret One</div>
-            <div class="font-option" data-font="'Anton'" style="font-family: 'Anton';">Anton</div>
-          </div>
-        </div>
-
-        <!-- Finish dropdown -->
-        <div class="form-group">
-          <label for="finishSelect">Finish</label>
-          <select id="finishSelect">
-            <option value="Matte">Matte</option>
-            <option value="Glossy">Glossy</option>
-            <option value="Satin">Satin</option>
-            <option value="Wooden">Wooden</option>
-            <option value="Vintage">Vintage</option>
-          </select>
-        </div>
-
-        <!-- Mounting dropdown -->
-        <div class="form-group">
-          <label for="mountingSelect">Mounting</label>
-          <select id="mountingSelect">
-            <option value="No Mounting">No Mounting</option>
-            <option value="Wall Mount">Wall Mount</option>
-            <option value="Table Mount">Table Mount</option>
-            <option value="Frame Mount">Frame Mount</option>
-          </select>
-        </div>
-
-        <!-- Buttons -->
-        <button class="add-to-cart">Add to Cart</button>
-        <button class="add-to-cart" onclick="updatePreview()">Enter</button>
-      </div>
-    </div>
-
-    <script>
-      let selectedFont = "'Cherry Cordial'";
-
-      function updatePreview() {
-        const nameInput = document.getElementById('nameInput').value;
-        const namePreview = document.getElementById('name-preview');
-        namePreview.style.fontFamily = selectedFont;
-        namePreview.textContent = nameInput ? nameInput : 'Enter Your Text';
-      }
-
-      // Font selection logic
-      document.querySelectorAll('.font-option').forEach(option => {
-        option.addEventListener('click', () => {
-          selectedFont = option.getAttribute('data-font');
-          document.querySelectorAll('.font-option').forEach(el => el.classList.remove('active'));
-          option.classList.add('active');
-          updatePreview();
-        });
-      });
-    </script>
-  </body>
-</html>
+            <!-- All updated font options with preview -->
+            <!-- Repeat for each font (see previous message) -->
+            <!-- ... Paste the entire block I gave above for font-grid here ... -->
+            <!-- Start copy -->
+            <div class="font-option active" data-font="'Cherry Cordial'" style="font-family: 'Cherry Cordial';">
+              Cherry Cordial
+              <div class="font-preview">Enter Your Text</div>
+            </div>
+            <div class="font-option" data-font="'Roboto'" style="font-family: 'Roboto';">
+              Roboto
+              <div class="font-preview">Enter Your Text</div>
+            </div>
+            <div class="font-option" data-font="'Lobster'" style="font-family: 'Lobster';">
+              Lobster
+              <div class="font-preview">Enter Your Text</div>
+            </div>
+            <div class="font-option" data-font="'Pacifico'" style="font-family: 'Pacifico';">
+              Pacifico
+              <div class="font-preview">Enter Your Text</div>
+            </div>
+            <div class="font-option" data-font="'Dancing Script'" style="font-family: 'Dancing Script';">
+              Dancing Script
+              <div class="font-preview">Enter Your Text</div>
+            </div>
+            <div class="font-option" data-font="'Great Vibes'" style="font-family: 'Great Vibes';">
+              Great Vibes
+              <div class="font-preview">Enter Your Text</div>
+            </div>
+            <div class="font-option" data-font="'Playfair Display'" style="font-family: 'Playfair Display';">
+              Playfair Display
+              <div class="font-preview">Enter Y
