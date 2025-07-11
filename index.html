@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Custom Font Preview</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cherry+Cordial&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!-- Load 18 Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cherry+Cordial&family=Pacifico&family=Lobster&family=Roboto&family=Dancing+Script&family=Great+Vibes&family=Playfair+Display&family=Alex+Brush&family=Satisfy&family=Cinzel&family=Quicksand&family=Raleway&family=Arvo&family=Montserrat&family=Bebas+Neue&family=Fredoka&family=Poiret+One&family=Anton&display=swap" rel="stylesheet" />
 
     <style>
       body {
@@ -31,15 +32,14 @@
         padding: 20px;
       }
 
-     .left-side {
-  flex: 1;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px; /* <--- This controls distance between image and text preview */
-}
-
+      .left-side {
+        flex: 1;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
 
       .left-side img {
         width: 300px;
@@ -73,7 +73,8 @@
         margin-bottom: 5px;
       }
 
-      .form-group select, .form-group input {
+      .form-group input,
+      .form-group select {
         width: 100%;
         padding: 10px;
         font-size: 16px;
@@ -106,80 +107,117 @@
         background-color: #e68900;
       }
 
-      /* Container for the preview of the entered name */
       .preview-container {
         margin-top: 30px;
-        font-family: 'Cherry Cordial', cursive;
         font-size: 36px;
         color: #333;
+      }
+
+      /* NEW FONT GRID STYLES */
+      .font-grid {
+        display: flex;
+        flex-wrap: wrap;
+        max-height: 360px; /* Scroll if taller */
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        gap: 20px 10px;
+        margin-top: 10px;
+      }
+
+      .font-option {
+        width: calc((100% - 20px) / 3);
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .font-option:hover {
+        background-color: #f0f0f0;
+      }
+
+      .font-option.active {
+        border-color: #FF9900;
+        background-color: #fff6e5;
       }
     </style>
   </head>
 
   <body>
     <div class="container">
-   <!--    Left side image and preview area -->
-  
-<div class="left-side">
-  <img src="your-image.jpg" alt="Sample preview image"> <https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.craftcuts.com%2Fmonograms%2Fwood-monograms.html&psig=AOvVaw1fIhdIowv7p1Ifju5spWeK&ust=1752334621609000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCOjPja-RtY4DFQAAAAAdAAAAABAE>
-  <div class="preview-container" id="name-preview">
-    <!-- Dynamic name preview will appear here -->
-    Enter Your Text
-  </div>
-</div>
+      <!-- Left side -->
+      <div class="left-side">
+        <img src="your-image.jpg" alt="Sample preview image" />
+        <div class="preview-container" id="name-preview">Enter Your Text</div>
+      </div>
 
-
-      <!-- Right side form section -->
+      <!-- Right side -->
       <div class="right-side">
         <h1>Enter Your Text</h1>
         <p>Customize your text below and see the preview instantly.</p>
 
-        <!-- Input for name -->
+        <!-- Name input -->
         <div class="form-group">
           <label for="nameInput">Enter Your Text</label>
-          <input type="text" id="nameInput" class="input-text" placeholder="Enter Your Text">
+          <input type="text" id="nameInput" class="input-text" placeholder="Enter Your Text" />
         </div>
-        <!-- Monogram Length Dropdown -->
-<div class="form-group">
-  <label for="lengthSelect">Select Length (in inches):</label>
-  <select id="lengthSelect">
-    <option value="12">12 in</option>
-    <option value="14">14 in</option>
-    <option value="16">16 in</option>
-    <option value="18">18 in</option>
-    <option value="20">20 in</option>
-    <option value="22">22 in</option>
-    <option value="24">24 in</option>
-    <option value="26">26 in</option>
-    <option value="28">28 in</option>
-    <option value="30">30 in</option>
-    <option value="32">32 in</option>
-    <option value="34">34 in</option>
-    <option value="36">36 in</option>
-    <option value="38">38 in</option>
-    <option value="40">40 in</option>
-    <option value="42">42 in</option>
-    <option value="44">44 in</option>
-    <option value="46">46 in</option>
-    <option value="48">48 in</option>
-  </select>
-</div>
 
-
-        <!-- Dropdown for font -->
+        <!-- Size dropdown -->
         <div class="form-group">
-          <label for="fontSelect">Choose Font</label>
-          <select id="fontSelect">
-            <option value="Cherry Cordial">Cherry Cordial</option>
-            <option value="Roboto">Roboto</option>
-            <option value="Lobster">Lobster</option>
-            <option value="Pacifico">Pacifico</option>
-            <option value="Dancing Script">Dancing Script</option>
-             <option value="'Manufacturing Consent'">Manufacturing Consent</option>
+          <label for="lengthSelect">Select Length (in inches):</label>
+          <select id="lengthSelect">
+            <option value="12">12 in</option>
+            <option value="14">14 in</option>
+            <option value="16">16 in</option>
+            <option value="18">18 in</option>
+            <option value="20">20 in</option>
+            <option value="22">22 in</option>
+            <option value="24">24 in</option>
+            <option value="26">26 in</option>
+            <option value="28">28 in</option>
+            <option value="30">30 in</option>
+            <option value="32">32 in</option>
+            <option value="34">34 in</option>
+            <option value="36">36 in</option>
+            <option value="38">38 in</option>
+            <option value="40">40 in</option>
+            <option value="42">42 in</option>
+            <option value="44">44 in</option>
+            <option value="46">46 in</option>
+            <option value="48">48 in</option>
           </select>
         </div>
 
-        <!-- Dropdown for finish -->
+        <!-- FONT GRID replaces dropdown -->
+        <div class="form-group">
+          <label>Choose Font</label>
+          <div class="font-grid" id="fontGrid">
+            <div class="font-option active" data-font="'Cherry Cordial'" style="font-family: 'Cherry Cordial';">Cherry Cordial</div>
+            <div class="font-option" data-font="'Roboto'" style="font-family: 'Roboto';">Roboto</div>
+            <div class="font-option" data-font="'Lobster'" style="font-family: 'Lobster';">Lobster</div>
+            <div class="font-option" data-font="'Pacifico'" style="font-family: 'Pacifico';">Pacifico</div>
+            <div class="font-option" data-font="'Dancing Script'" style="font-family: 'Dancing Script';">Dancing Script</div>
+            <div class="font-option" data-font="'Great Vibes'" style="font-family: 'Great Vibes';">Great Vibes</div>
+            <div class="font-option" data-font="'Playfair Display'" style="font-family: 'Playfair Display';">Playfair Display</div>
+            <div class="font-option" data-font="'Alex Brush'" style="font-family: 'Alex Brush';">Alex Brush</div>
+            <div class="font-option" data-font="'Satisfy'" style="font-family: 'Satisfy';">Satisfy</div>
+            <div class="font-option" data-font="'Cinzel'" style="font-family: 'Cinzel';">Cinzel</div>
+            <div class="font-option" data-font="'Quicksand'" style="font-family: 'Quicksand';">Quicksand</div>
+            <div class="font-option" data-font="'Raleway'" style="font-family: 'Raleway';">Raleway</div>
+            <div class="font-option" data-font="'Arvo'" style="font-family: 'Arvo';">Arvo</div>
+            <div class="font-option" data-font="'Montserrat'" style="font-family: 'Montserrat';">Montserrat</div>
+            <div class="font-option" data-font="'Bebas Neue'" style="font-family: 'Bebas Neue';">Bebas Neue</div>
+            <div class="font-option" data-font="'Fredoka'" style="font-family: 'Fredoka';">Fredoka</div>
+            <div class="font-option" data-font="'Poiret One'" style="font-family: 'Poiret One';">Poiret One</div>
+            <div class="font-option" data-font="'Anton'" style="font-family: 'Anton';">Anton</div>
+          </div>
+        </div>
+
+        <!-- Finish dropdown -->
         <div class="form-group">
           <label for="finishSelect">Finish</label>
           <select id="finishSelect">
@@ -191,7 +229,7 @@
           </select>
         </div>
 
-        <!-- Dropdown for mounting -->
+        <!-- Mounting dropdown -->
         <div class="form-group">
           <label for="mountingSelect">Mounting</label>
           <select id="mountingSelect">
@@ -202,28 +240,31 @@
           </select>
         </div>
 
-   
-        <!-- Add to Cart button -->
+        <!-- Buttons -->
         <button class="add-to-cart">Add to Cart</button>
-
-        <!-- Button to update the preview -->
         <button class="add-to-cart" onclick="updatePreview()">Enter</button>
       </div>
     </div>
 
     <script>
+      let selectedFont = "'Cherry Cordial'";
+
       function updatePreview() {
         const nameInput = document.getElementById('nameInput').value;
         const namePreview = document.getElementById('name-preview');
-        const selectedFont = document.getElementById('fontSelect').value;
-        
-        // Set the font family for preview text
         namePreview.style.fontFamily = selectedFont;
-
-        // Show the entered name as preview
         namePreview.textContent = nameInput ? nameInput : 'Enter Your Text';
       }
+
+      // Font selection logic
+      document.querySelectorAll('.font-option').forEach(option => {
+        option.addEventListener('click', () => {
+          selectedFont = option.getAttribute('data-font');
+          document.querySelectorAll('.font-option').forEach(el => el.classList.remove('active'));
+          option.classList.add('active');
+          updatePreview();
+        });
+      });
     </script>
   </body>
 </html>
-
