@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Live Side-by-Side Text Preview</title>
+  <title>Live Font Preview</title>
+  <!-- Load Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -46,6 +48,7 @@
       border: 1px solid #e0e0e0;
       word-break: break-word;
       text-align: center;
+      transition: font-family 0.2s;
     }
     .right input[type="text"] {
       padding: 14px;
@@ -60,6 +63,14 @@
       font-size: 1.1rem;
       margin-bottom: 5px;
       color: #444;
+    }
+    .right select {
+      padding: 10px;
+      font-size: 1rem;
+      margin-top: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
     }
     @media (max-width: 700px) {
       .container {
@@ -81,14 +92,30 @@
     <div class="right">
       <label for="textbox">Type Your Text:</label>
       <input type="text" id="textbox" placeholder="Type something..."/>
+      <label for="fontSelect">Choose Font:</label>
+      <select id="fontSelect">
+        <option value="'Roboto', sans-serif">Roboto</option>
+        <option value="'Lobster', cursive">Lobster</option>
+        <option value="'Pacifico', cursive">Pacifico</option>
+        <option value="sans-serif">Default</option>
+      </select>
     </div>
   </div>
   <script>
     const textbox = document.getElementById('textbox');
     const preview = document.getElementById('preview');
-    textbox.addEventListener('input', () => {
+    const fontSelect = document.getElementById('fontSelect');
+
+    function updatePreview() {
       preview.textContent = textbox.value || 'Your text will appear here';
-    });
+      preview.style.fontFamily = fontSelect.value;
+    }
+
+    textbox.addEventListener('input', updatePreview);
+    fontSelect.addEventListener('change', updatePreview);
+
+    // Set initial font
+    updatePreview();
   </script>
 </body>
 </html>
