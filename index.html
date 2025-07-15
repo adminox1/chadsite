@@ -2,119 +2,151 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <title>Live Font Preview</title>
-  <!-- Load Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+  <title>Sign Preview in Room</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Lobster&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      height: 100vh;
       font-family: sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
     .container {
       display: flex;
-      width: 80vw;
-      height: 60vh;
       background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
       overflow: hidden;
+      width: 900px;
+      max-width: 98vw;
+      height: 500px;
     }
-    .left, .right {
+    .left {
+      flex: 1.2;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #e6e6e6;
+    }
+    .room-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.96);
+    }
+    #sign-preview {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px 40px;
+      background: rgba(255,255,255,0.0);
+      color: #222;
+      font-family: 'Lobster', cursive;
+      font-size: 48px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      white-space: nowrap;
+      pointer-events: none;
+      transition: font-size 0.2s;
+    }
+    .right {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
-    }
-    .left {
-      background: #f9f9f9;
-      border-right: 1px solid #eee;
-      min-width: 0;
-    }
-    #preview {
-      width: 100%;
-      min-height: 60px;
-      font-size: 2rem;
-      padding: 20px;
-      color: #333;
-      background: #faf5e4;
-      border-radius: 6px;
-      border: 1px solid #e0e0e0;
-      word-break: break-word;
-      text-align: center;
-      transition: font-family 0.2s;
-    }
-    .right input[type="text"] {
-      padding: 14px;
-      font-size: 1.2rem;
-      width: 100%;
-      box-sizing: border-box;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      margin-top: 10px;
+      align-items: flex-start;
+      padding: 40px;
+      background: #fff;
     }
     .right label {
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-      color: #444;
-    }
-    .right select {
-      padding: 10px;
       font-size: 1rem;
-      margin-top: 15px;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .right input, .right select {
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1rem;
       border-radius: 6px;
       border: 1px solid #ccc;
-      width: 100%;
+      margin-bottom: 18px;
+      margin-top: 4px;
     }
-    @media (max-width: 700px) {
-      .container {
-        flex-direction: column;
-        width: 98vw;
-        height: auto;
-      }
-      .left, .right {
-        padding: 20px 10px;
-      }
+    .right select {
+      margin-bottom: 0;
+    }
+    .right .font-sample {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    @media (max-width: 900px) {
+      .container { flex-direction: column; width: 99vw; height: auto; }
+      .left, .right { padding: 20px; height: 340px; }
+      .room-img { height: 100%; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="left">
-      <div id="preview">Your text will appear here</div>
+      <!-- Replace the image src below with your own room picture -->
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Room" class="room-img"/>
+      <div id="sign-preview">Your sign text</div>
     </div>
     <div class="right">
-      <label for="textbox">Type Your Text:</label>
-      <input type="text" id="textbox" placeholder="Type something..."/>
+      <label for="signtext">Type your sign text:</label>
+      <input type="text" id="signtext" placeholder="Welcome Home"/>
       <label for="fontSelect">Choose Font:</label>
       <select id="fontSelect">
-        <option value="'Roboto', sans-serif">Roboto</option>
-        <option value="'Lobster', cursive">Lobster</option>
-        <option value="'Pacifico', cursive">Pacifico</option>
-        <option value="sans-serif">Default</option>
+        <option value="'Roboto', sans-serif" style="font-family: 'Roboto';">Roboto</option>
+        <option value="'Lobster', cursive" style="font-family: 'Lobster';">Lobster</option>
       </select>
+      <label for="heightSelect">Choose Height (inches):</label>
+      <select id="heightSelect">
+        <option value="36">36 inches</option>
+        <option value="24">24 inches</option>
+        <option value="18">18 inches</option>
+        <option value="12">12 inches</option>
+        <option value="8">8 inches</option>
+      </select>
+      <div class="font-sample" id="sample-info">Font: Lobster &mdash; Height: 36"</div>
     </div>
   </div>
   <script>
-    const textbox = document.getElementById('textbox');
-    const preview = document.getElementById('preview');
+    const signtext = document.getElementById('signtext');
+    const signPreview = document.getElementById('sign-preview');
     const fontSelect = document.getElementById('fontSelect');
+    const heightSelect = document.getElementById('heightSelect');
+    const sampleInfo = document.getElementById('sample-info');
+
+    // Maps height in inches to font-size in px (adjust as needed)
+    const heightToFontSize = {
+      "36": 64,
+      "24": 48,
+      "18": 38,
+      "12": 28,
+      "8": 18
+    };
 
     function updatePreview() {
-      preview.textContent = textbox.value || 'Your text will appear here';
-      preview.style.fontFamily = fontSelect.value;
+      const font = fontSelect.value;
+      const height = heightSelect.value;
+      signPreview.textContent = signtext.value || 'Your sign text';
+      signPreview.style.fontFamily = font;
+      signPreview.style.fontSize = heightToFontSize[height] + 'px';
+      sampleInfo.innerHTML = `Font: <span style="font-family:${font};">${fontSelect.options[fontSelect.selectedIndex].text}</span> &mdash; Height: ${height}"`;
     }
 
-    textbox.addEventListener('input', updatePreview);
+    signtext.addEventListener('input', updatePreview);
     fontSelect.addEventListener('change', updatePreview);
+    heightSelect.addEventListener('change', updatePreview);
 
-    // Set initial font
+    // Initial preview
     updatePreview();
   </script>
 </body>
